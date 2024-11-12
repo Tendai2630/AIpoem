@@ -9,25 +9,26 @@ cursor:"",})
 ;
 
 
-
-
-
-
-
 function generatepoem (event){
     event.preventDefault();
-let instructionInput=document.querySelector("User-instructions")    
+
+let instructionInput=document.querySelector("#User-instructions")    
 
 let apikey ="t4f81808b6o8c140994f8e9749ba33a0";
-let prompt ='User instructions :Generate a English poem about $(instructionInput.value)';
-let context="You are a nature expert and love to write nature poem .your mission is to produce a 4 line poem using basic HTML .Please follow instructions given by the user  ";
-let apiURL="https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apikey}";
+let context =
+"You are a romantic Poem expert and love to write short poems. You mission is to generate a 4 line poem in basic HTML and separate each line with a <br />. Make sure to follow the user instructions. Do not include a title to the poem. Sign the poem with 'SheCodes AI' inside a <strong> element at the end of the poem and NOT at the beginning";
+let prompt = `User instructions: Generate a french poem about ${instructionsInput.value}`;
+let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+
+let poemElement = document.querySelector("#poem");
+poemElement.classList.remove("hidden");
+poemElement.innerHTML = `<div class="generating">⏳ Generating a french poem about ${instructionsInput.value}</div>`;
 
 axios.get(apiURL), then(displayPoem);
 
 
 
-    ne
+    
     
 }
 
